@@ -1,0 +1,239 @@
+chmod a+x OpenRGB-x86_64.AppImage 
+cd ..
+chmod +x openrgb-udev-install.sh 
+./openrgb-udev-install.sh
+sudo ./OpenRGB-x86_64.AppImage 
+zypper install i2c-tools
+sudo zypper install i2c-tools
+sudo modprobe i2c-dev
+sudo groupadd --system i2c
+sudo usermod $USER -aG i2c
+sudo touch /etc/modules-load.d/i2c.conf && sudo sh -c 'echo "i2c-dev" >> /etc/modules-load.d/i2c.conf'
+sudo modprobe i2c-piix4
+sudo i2cdetect -l
+sudo zypper install opi
+opi coolercontrol
+sudo systemctl enable --now coolercontrold
+opi coolercontrol
+sudo zypper install lm-sensors
+sudo sensors-detect
+sensors
+clear
+sensors
+sudo sensors-detect
+sensors
+sensors-detect
+sudo sensors-detect
+sudo modprobe i2c-piix4
+sudo sensors-detect
+sudo i2cdetect -l
+sudo sensors-detect --auto
+sensors
+systemd-analyze blame
+sudo zypper addrepo https://download.opensuse.org/repositories/openSUSE:Factory/standard/openSUSE:Factory.repo
+echo /proc/cmdline
+cat /proc/cmdline
+sudo systemctl disable NetworkManager-wait-online.service
+sudo i2cdetect -l
+sudo modprobe i2c-dev
+sudo modprobe i2c-piix4
+sudo i2cdetect -l
+clear
+sensors list
+sensors
+sudo sensor detect
+sudo sensors detect
+sudo sensors-detect
+sudo sensors-detect -Y
+sudo sensors-detect -y
+sudo sensors-detect -auto
+sudo sensors-detect --auto
+sensors
+uname -r
+sudo modprobe it87
+sudo sensors-detect
+sensors-detect
+sudo sensors-detect
+clear
+modprobe it87 force_id=0x8689
+sudo modprobe it87 force_id=0x8689
+echo it87 > /etc/modules-load.d/gigabyte-sensors-it87.conf
+sudo echo it87 > /etc/modules-load.d/gigabyte-sensors-it87.conf
+sudo modprobe it87 force_id=0x8628
+sensors
+zypper rm -u coolercontrol
+sudo zypper rm -u coolercontrol
+kill -9 16852
+sudo kill -9 16852
+sudo zypper rm -u coolercontrol
+zypper ps -s
+sudo zypper rm -u coolercontrold
+sudo zypper rm -u coolercontrol-liqctld 
+zypper ps -s
+pwmconfig
+sudo pwmconfig
+fancontrol
+sudo fancontrol
+cat /etc/
+sudo pwmconfig 
+sudo fancontrol 
+sudo nano /etc/fancontrol 
+ls
+cd Desktop/
+curl -o /tmp/kfrgb.sh 'https://raw.githubusercontent.com/KeyofBlueS/kfrgb/master/kfrgb.sh'
+sudo mkdir -p /opt/kfrgb/
+sudo mv /tmp/kfrgb.sh /opt/kfrgb/
+sudo chown root:root /opt/kfrgb/kfrgb.sh
+sudo chmod 755 /opt/kfrgb/kfrgb.sh
+sudo chmod +x /opt/kfrgb/kfrgb.sh
+sudo ln -s /opt/kfrgb/kfrgb.sh /usr/local/bin/kfrgb
+sudo chmod +x ./ram ram\ rgb.sh 
+sudo chmod 755 ./ram\ rgb.sh 
+sudo chmod +x ./ram ram\ rgb.sh 
+sudo chmod +x ./ram\ rgb.sh 
+./ram\ rgb.sh 
+fish
+cd ..
+cd Desktop/
+git clone https://gitlab.com/geofbot/OpenRGB.git
+cd OpenRGB/
+ls
+git pull origin master
+git pull
+git status
+git checkout fury_ddr5 
+git pull
+git pull origin master
+git status
+ls
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+cd ..
+clear
+chmod +x ./set_ram_rgb.sh 
+./set_ram_rgb.sh 0xff 0xff 0xff
+which i2cset
+cat ~/.bashrc
+chmod +x ./set_ram_rgb.sh 
+./set_ram_rgb.sh 0xff 0xff 0xff
+fish
+sudo nano /etc/fancontrol
+cat /sys/class
+cat /sys/class/hwmon/hwmon5/pwm6_enable 
+echo 2 | sudo tee /sys/class/hwmon/hwmon5/pwm4_enable 
+cat /sys/class/hwmon/hwmon5/pwm4_enable 
+sensors
+sudo i2cdetect -y 9
+sudo i2cdetect -y 10
+sudo i2cdetect -y 11
+sudo i2cdetect -l
+sudo dmidecode
+sudo i2cdetect -l
+sudo zypper install ca-certificates git build-essential cmake gcc g++ libkf5config-dev libkf5auth-dev libkf5package-dev libkf5declarative-dev libkf5coreaddons-dev libkf5dbusaddons-dev libkf5kcmutils-dev libkf5i18n-dev libkf5plasma-dev libqt5core5a libqt5widgets5 libqt5gui5 libqt5qml5 extra-cmake-modules qtbase5-dev libkf5notifications-dev qml-module-org-kde-kirigami2 qml-module-qtquick-dialogs qml-module-qtquick-controls2 qml-module-qtquick-layouts qml-module-qt-labs-settings qml-module-qt-labs-folderlistmodel gettext
+cd Desktop/
+git clone https://github.com/Maldela/fancontrol-gui.git
+cd fancontrol-gui/
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_KCM=on -DBUILD_PLASMOID=on
+sudo zypper install qtbase5-dev
+sudo zypper install libqt5-qtbase
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_KCM=on -DBUILD_PLASMOID=onquit
+sudo zypper search --provides Qt5CoreConfig.cmake
+sudo zypper search --provides qt5core-config.make
+sudo zypper addrepo https://download.opensuse.org/repositories/KDE:Qt5/openSUSE_Factory/KDE:Qt5.repo
+sudo zypper install libqt5-qtbase
+sudo zypper refresh
+sudo zypper install libqt5-qtbase
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_KCM=on -DBUILD_PLASMOID=onquit
+ls
+rm -rf ./
+rm *
+ls
+rm -rf *
+ls
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_KCM=on -DBUILD_PLASMOID=onquit
+rm -rf *
+ls
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_KCM=on -DBUILD_PLASMOID=onquit
+cd ..
+rm -rf fancontrol-gui/
+cnf qmake-qt5
+git clone https://github.com/Maldela/fancontrol-gui.git
+cd fancontrol-gui/
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_KCM=on -DBUILD_PLASMOID=onquit
+cnf qt5core-config.make
+cnf qtmake-qt5
+cnf qmake-qt5
+sudo zypper install libqt5-qtbase-common-devel
+lsof -p 24177
+sudo lsof -p 24177
+sudo zypper install libqt5-qtbase-common-devel
+kill -9 24177
+sudo kill -9 24177
+sudo zypper install libqt5-qtbase-common-devel
+rm -rf *
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_KCM=on -DBUILD_PLASMOID=onquit
+cnf Qt5Core
+echo CMAKE_PREFIX_PATH
+echo $CMAKE_PREFIX_PATH
+su
+kfrgb --ramslots 2,4 --off
+sudo kfrgb --ramslots 2,4 --off
+ls -l /opt/kfrgb/kfrgb.sh 
+sudo /opt/kfrgb/kfrgb.sh --ramslots 2,4 --smbus 9 --off
+zypper install yad
+sudo zypper install yad
+sudo zypper install lshw
+sudo /opt/kfrgb/kfrgb.sh --ramslots 2,4 --smbus 9 --off
+su -c 'zypper up && zypper install yad'
+cat /etc/os-release
+zypper addrepo https://download.opensuse.org/repositories/GNOME:Apps/openSUSE_Factory/GNOME:Apps.repo
+sudo zypper addrepo https://download.opensuse.org/repositories/GNOME:Apps/openSUSE_Factory/GNOME:Apps.repo
+zypper refresh
+sudo zypper refresh
+sudo zypper install yad
+sudo /opt/kfrgb/kfrgb.sh --ramslots 2,4 --smbus 9 --off
+sudo /opt/kfrgb/kfrgb.sh
+sudo /opt/kfrgb/kfrgb.sh --iwanttoriskandskipmodeldetectionevenifiknowthisisstronglynotrecommended --ramslots 2,4 --smbus 9 --off
+i2cdetect -y 9
+sudo i2cdetect -y 9
+sudo /opt/kfrgb/kfrgb.sh --ramslots 2,4 --smbus 9 --off
+sudo i2cdetect
+sudo i2cdetect =l
+sudo i2cdetect -l
+sudo rpm -i ./Downloads/libqt5-qtbase-5.15.12+kde151-1.8.src.rpm 
+cd Downloads/
+ls
+chmod +x qt-unified-linux-x64-4.7.0-online.run 
+su
+sudo pwmconfig
+sensors
+sudo nano /etc/fancontrol
+sudo vim /etc/fancontrol
+sudo i2cdetect -l
+sudo lshw -short -C memory
+sensors
+sudo vim /etc/fancontrol
+sensors
+sudo vim /etc/fancontrol
+sensors
+sudo i2cset -y 11 0x61 0x08 0x53; sudo i2cget -y 11 0x61 0x1 i 2; sudo i2cget -y 11 0x61 0x2 i 2; sudo i2cget -y 11 0x61 0x3 i 2; sudo i2cget -y 11 0x61 0x4 i 2; sudo i2cget -y 11 0x61 0x6 i 2; sudo i2cset -y 11 0x61 0x08 0x44
+sudo i2cset -y 9 0x62 0x08 0x53; sudo i2cget -y 9 0x62 0x1 i 2; sudo i2cget -y 9 0x62 0x2 i 2; sudo i2cget -y 9 0x62 0x3 i 2; sudo i2cget -y 9 0x62 0x4 i 2; sudo i2cget -y 9 0x62 0x6 i 2; sudo i2cset -y 9 0x62 0x08 0x44
+sudo i2cset -y 9 0x61 0x08 0x53; sudo i2cget -y 9 0x61 0x1 i 2; sudo i2cget -y 9 0x61 0x2 i 2; sudo i2cget -y 9 0x61 0x3 i 2; sudo i2cget -y 9 0x61 0x4 i 2; sudo i2cget -y 9 0x61 0x6 i 2; sudo i2cset -y 9 0x61 0x08 0x44
+sudo i2cdetect -l
+sudo i2c get 9
+sudo i2cdetect get 9
+sudo i2cget 9
+sudo i2cget -y 9
+fish
+sudo fancontrol
+sudo pwmconfig
+sudo fancontrol
+nvm
+clear
+ls
+exit
