@@ -1,0 +1,49 @@
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+
+alias pn=pnpm
+alias v="nvim"
+alias vl="NVIM_APPNAME=nvim-lazyvim nvim"
+
+# pnpm
+set -gx PNPM_HOME "/home/sebastian/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
+
+{{- if eq .chezmoi.hostname "opensuse" }}
+# Created by `pipx` on 2024-07-31 19:40:01
+set PATH $PATH /home/sebastian/.local/bin
+
+# Save all workspaces function
+function save_all_workspaces
+    set workspaces (i3-msg -t get_workspaces | jq -r '.[].num')
+    for workspace in $workspaces
+        i3-resurrect save -w $workspace
+    end
+    echo "Saved layouts for all active workspaces."
+end
+
+# Restore all workspaces function
+function restore_all_workspaces
+    set layout_files (ls ~/.config/i3-resurrect)
+    for layout_file in $layout_files
+        set workspace (string replace -r '[^0-9]' '' $layout_file)
+        i3-resurrect restore -w $workspace
+    end
+    echo "Restored layouts for all saved workspaces."
+end
+{{- end}}
+
+function y
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+    if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        builtin cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
+end
+
+zoxide init fish | source

@@ -1,0 +1,13 @@
+[user]
+	name = Sebastian Darie
+	email = sebastian.darie@carasent.com
+[push]
+	autoSetupRemote = true
+	default = current
+	followTags = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
