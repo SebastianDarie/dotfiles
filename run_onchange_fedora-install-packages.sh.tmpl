@@ -1,6 +1,7 @@
-{{ if eq .chezmoi.osid "linux-fedora" -}}
+{{ if eq .osid "linux-fedora-asahi-remix" -}}
 #!/bin/bash
 
 {{ range .packages.fedora.packages -}}
-sudo dnf {{ . | quote }}
+sudo dnf -y {{ . | quote }}
+{{ end }}
 {{ end -}}
