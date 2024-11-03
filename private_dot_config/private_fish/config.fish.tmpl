@@ -20,7 +20,6 @@ end
 # Created by `pipx` on 2024-07-31 19:40:01
 set PATH $PATH /home/sebastian/.local/bin
 
-# Save all workspaces function
 function save_all_workspaces
     set workspaces (i3-msg -t get_workspaces | jq -r '.[].num')
     for workspace in $workspaces
@@ -29,7 +28,6 @@ function save_all_workspaces
     echo "Saved layouts for all active workspaces."
 end
 
-# Restore all workspaces function
 function restore_all_workspaces
     set layout_files (ls ~/.config/i3-resurrect)
     for layout_file in $layout_files
