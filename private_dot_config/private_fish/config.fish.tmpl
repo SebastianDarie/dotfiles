@@ -13,7 +13,7 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 # pnpm end
 
-{{- if eq .chezmoi.hostname "opensuse" }}
+{{- if eq .chezmoi.osRelease.id "opensuse-tumbleweed" }}
 # Created by `pipx` on 2024-07-31 19:40:01
 set PATH $PATH /home/sebastian/.local/bin
 
