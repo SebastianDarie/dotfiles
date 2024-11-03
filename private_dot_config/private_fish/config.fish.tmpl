@@ -1,5 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    atuin init fish --disable-up-arrow | source
+    zoxide init fish | source
 end
 
 alias pn=pnpm
@@ -45,5 +47,3 @@ function y
     end
     rm -f -- "$tmp"
 end
-
-zoxide init fish | source
