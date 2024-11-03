@@ -2,6 +2,6 @@
 #!/bin/bash
 
 {{ range .packages.fedora.packages -}}
-sudo dnf -y {{ . | quote }}
+sudo dnf install -y {{ . | quote }}
 {{ end }}
 {{ end -}}
