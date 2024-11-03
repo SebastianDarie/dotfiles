@@ -1,4 +1,13 @@
 packages:
   fedora:
     packages:
+      - 'bat'
+      - 'dnf-plugins-core'
+      - 'fd-find'
+      - 'fish'
+      - 'fzf'
       - 'git'
+      - 'lazygit'
+      - 'ripgrep'
+      - 'zoxide'
+      # - 'zps'

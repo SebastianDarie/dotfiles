@@ -1,0 +1,6 @@
+{{ if eq .chezmoi.osid "linux-fedora" -}}
+#!/bin/bash
+
+{{ range .packages.fedora.packages -}}
+sudo dnf {{ . | quote }}
+{{ end -}}
