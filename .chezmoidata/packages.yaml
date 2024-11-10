@@ -10,4 +10,5 @@ packages:
       - 'lazygit'
       - 'ripgrep'
       - 'zoxide'
+      - 'vim'
       # - 'zps'
