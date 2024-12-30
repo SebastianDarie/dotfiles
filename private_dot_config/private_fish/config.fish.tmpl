@@ -10,6 +10,8 @@ alias pn=pnpm
 alias v="nvim"
 alias vl="NVIM_APPNAME=nvim-lazyvim nvim"
 
+set -gx EDITOR nvim
+
 # pnpm
 set -gx PNPM_HOME "/home/sebastian/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
