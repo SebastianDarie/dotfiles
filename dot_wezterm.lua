@@ -109,6 +109,7 @@ config.ssh_domains = {
 }
 -- config.font_size = 10
 config.front_end = "WebGpu"
+config.max_fps = 255
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 -- config.tab_and_split_indices_are_zero_based = true
