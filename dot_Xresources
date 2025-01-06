@@ -1,0 +1,24 @@
+!xterm*background: black
+!xterm*foreground: white
+
+! Cursor settings
+xterm*cursorBlink: true
+XTerm*cursorOnTime: 500
+XTerm*cursorOffTime: 500
+xterm*cursorShape: block
+
+! Set font and size
+xterm*faceName: JetBrains Mono
+xterm*faceSize: 12
+
+! Set colors (adjust to match wezterm theme)
+xterm*foreground: #dcdccc
+xterm*background: #000000
+xterm*cursorColor: #52ad70
+
+! Enable true colors
+xterm*allowTcapOps: true
+xterm*dynamicColors: true
+
+! Scrollbar settings
+xterm*scrollBar: false
