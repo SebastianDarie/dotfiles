@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local sessionizer = require("sessionizer")
 local session_manager = require("session-manager")
--- local bg = require("bg")
+local bg = require("bg")
 
 local config = wezterm.config_builder()
 
@@ -10,7 +10,7 @@ local act = wezterm.action
 -- local opacity = 0.75
 -- local transparent_bg = "rgba(22, 24, 26, " .. opacity .. ")"
 
--- config.colors = require("cyberdream")
+config.colors = require("cyberdream")
 
 -- config.window_background_opacity = opacity
 -- config.window_decorations = "RESIZE"
@@ -46,59 +46,59 @@ local act = wezterm.action
 -- end)
 
 -- The filled in variant of the < symbol
-local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
+-- local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 
 -- The filled in variant of the > symbol
-local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
+-- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
 -- This function returns the suggested title for a tab.
 -- It prefers the title that was set via `tab:set_title()`
 -- or `wezterm cli set-tab-title`, but falls back to the
 -- title of the active pane in that tab.
-local function tab_title(tab_info)
-	local title = tab_info.tab_title
-	-- if the tab title is explicitly set, take that
-	if title and #title > 0 then
-		return title
-	end
-	-- Otherwise, use the title from the active pane
-	-- in that tab
-	return tab_info.active_pane.title
-end
+-- local function tab_title(tab_info)
+-- 	local title = tab_info.tab_title
+-- 	-- if the tab title is explicitly set, take that
+-- 	if title and #title > 0 then
+-- 		return title
+-- 	end
+-- 	-- Otherwise, use the title from the active pane
+-- 	-- in that tab
+-- 	return tab_info.active_pane.title
+-- end
 
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	local edge_background = "#0b0022"
-	local background = "#1b1032"
-	local foreground = "#808080"
-
-	if tab.is_active then
-		background = "#2b2042"
-		foreground = "#c0c0c0"
-	elseif hover then
-		background = "#3b3052"
-		foreground = "#909090"
-	end
-
-	local edge_foreground = background
-
-	local title = tab_title(tab)
-
-	-- ensure that the titles fit in the available space,
-	-- and that we have room for the edges.
-	title = wezterm.truncate_right(title, max_width - 2)
-
-	return {
-		{ Background = { Color = edge_background } },
-		{ Foreground = { Color = edge_foreground } },
-		{ Text = SOLID_LEFT_ARROW },
-		{ Background = { Color = background } },
-		{ Foreground = { Color = foreground } },
-		{ Text = title },
-		{ Background = { Color = edge_background } },
-		{ Foreground = { Color = edge_foreground } },
-		{ Text = SOLID_RIGHT_ARROW },
-	}
-end)
+-- wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+-- 	local edge_background = "#0b0022"
+-- 	local background = "#1b1032"
+-- 	local foreground = "#808080"
+--
+-- 	if tab.is_active then
+-- 		background = "#2b2042"
+-- 		foreground = "#c0c0c0"
+-- 	elseif hover then
+-- 		background = "#3b3052"
+-- 		foreground = "#909090"
+-- 	end
+--
+-- 	local edge_foreground = background
+--
+-- 	local title = tab_title(tab)
+--
+-- 	-- ensure that the titles fit in the available space,
+-- 	-- and that we have room for the edges.
+-- 	title = wezterm.truncate_right(title, max_width - 2)
+--
+-- 	return {
+-- 		{ Background = { Color = edge_background } },
+-- 		{ Foreground = { Color = edge_foreground } },
+-- 		{ Text = SOLID_LEFT_ARROW },
+-- 		{ Background = { Color = background } },
+-- 		{ Foreground = { Color = foreground } },
+-- 		{ Text = title },
+-- 		{ Background = { Color = edge_background } },
+-- 		{ Foreground = { Color = edge_foreground } },
+-- 		{ Text = SOLID_RIGHT_ARROW },
+-- 	}
+-- end)
 
 config.ssh_domains = {
 	{
@@ -109,10 +109,14 @@ config.ssh_domains = {
 }
 -- config.font_size = 10
 config.front_end = "WebGpu"
-config.max_fps = 255
+config.max_fps = 60
+-- config.animation_fps = 255
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
+config.window_background_opacity = 0.85
+config.text_background_opacity = 0.9
 -- config.tab_and_split_indices_are_zero_based = true
+-- config.enable_tab_bar = false
 
 config.leader = { key = "VoidSymbol", mods = "" }
 config.keys = {
@@ -187,10 +191,12 @@ config.keys = {
 	-- { key = "l", mods = "LEADER", action = wezterm.action({ EmitEvent = "load_session" }) },
 	{ key = "r", mods = "LEADER", action = wezterm.action({ EmitEvent = "restore_session" }) },
 
-	-- { key = "n", mods = "LEADER", action = wezterm.action_callback(bg.cycle_forward) },
-	-- { key = "p", mods = "LEADER", action = wezterm.action_callback(bg.cycle_back) },
-	-- { key = "c", mods = "LEADER", action = wezterm.action_callback(bg.choices) },
-	-- { key = "d", mods = "LEADER", action = wezterm.action_callback(bg.reset) },
+	{ key = "n", mods = "LEADER", action = wezterm.action_callback(bg.cycle_forward) },
+	{ key = "p", mods = "LEADER", action = wezterm.action_callback(bg.cycle_back) },
+	{ key = "c", mods = "LEADER", action = wezterm.action_callback(bg.choices) },
+	{ key = "d", mods = "LEADER", action = wezterm.action_callback(bg.reset) },
+	{ key = "w", mods = "LEADER", action = wezterm.action_callback(bg.set_width) },
+	{ key = "h", mods = "LEADER", action = wezterm.action_callback(bg.set_height) },
 	{ key = "r", mods = "ALT", action = act.ReloadConfiguration },
 	{ key = "l", mods = "CTRL|SHIFT", action = act.ShowDebugOverlay },
 }
@@ -243,5 +249,21 @@ end)
 -- 	end
 -- 	window:set_config_overrides(overrides)
 -- end)
+
+-- if wezterm.GLOBAL.background then
+-- 	config.background = {
+-- 		{
+-- 			source = {
+-- 				File = wezterm.GLOBAL.background,
+-- 			},
+-- 			hsb = bg.dimmer,
+-- 			repeat_x = "Mirror",
+-- 			repeat_y = "NoRepeat",
+-- 			width = wezterm.GLOBAL.bg_width,
+-- 			height = wezterm.GLOBAL.bg_height,
+-- 			vertical_align = bg.vertical_align,
+-- 		},
+-- 	}
+-- end
 
 return config
