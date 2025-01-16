@@ -1,0 +1,20 @@
+import = ["~/.config/alacritty/cyberdream.toml"]
+
+[scrolling]
+history = 5000
+
+[font]
+# normal = { family = "Jetbrains Nerdfont Mono", style = "Regular" }
+size = 11.25
+# size = 14
+
+[colors]
+[colors.primary]
+# foreground = "#52ad70"
+# background = "#000000"
+# background = "0x282828"
+# foreground = "0xebdbb2"
+
+[window]
+opacity = 0.7
+decorations = "none"
