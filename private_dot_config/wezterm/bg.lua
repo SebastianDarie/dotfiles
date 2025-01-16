@@ -3,9 +3,12 @@ local bg = {
 	current_idx = 1,
 	-- dir = "",
 	files = {},
-}
 
-local dimmer = { brightness = 0.04 }
+	-- width = "1050",
+	-- height = "1480",
+	vertical_align = "Middle",
+	dimmer = { brightness = 0.04 },
+}
 
 local next = next
 math.randomseed(os.time())
@@ -36,12 +39,12 @@ local function set_opt(window)
 			source = {
 				File = wezterm.GLOBAL.background,
 			},
-			hsb = dimmer,
+			hsb = bg.dimmer,
 			repeat_x = "Mirror",
 			repeat_y = "NoRepeat",
-			width = "1050",
-			height = "1480",
-			vertical_align = "Middle",
+			width = wezterm.GLOBAL.bg_width,
+			height = wezterm.GLOBAL.bg_height,
+			vertical_align = bg.vertical_align,
 		},
 	}
 
@@ -83,12 +86,12 @@ function bg.choices(window, pane)
 												source = {
 													File = file,
 												},
-												hsb = dimmer,
+												hsb = bg.dimmer,
 												repeat_x = "Mirror",
 												repeat_y = "NoRepeat",
-												width = "1050",
-												height = "1480",
-												vertical_align = "Middle",
+												width = wezterm.GLOBAL.bg_width,
+												height = wezterm.GLOBAL.bg_height,
+												vertical_align = bg.vertical_align,
 												--attachment = { Parallax = 0.3 },
 											},
 										}
@@ -183,6 +186,54 @@ function bg.cycle_back(window)
 
 	wezterm.GLOBAL.background = bg.files[bg.current_idx]
 	set_opt(window)
+end
+
+function bg.set_width(window, pane)
+	window:perform_action(
+		wezterm.action.PromptInputLine({
+			-- description = "Enter new width for background",
+			description = wezterm.format({
+				{ Attribute = { Intensity = "Bold" } },
+				{ Foreground = { AnsiColor = "Fuchsia" } },
+				{ Text = "Enter new width for background" },
+			}),
+			initial_value = wezterm.GLOBAL.bg_width,
+			action = wezterm.action_callback(function(_, _, line)
+				-- line will be `nil` if they hit escape without entering anything
+				-- An empty string if they just hit enter
+				-- Or the actual line of text they wrote
+				if line then
+					wezterm.GLOBAL.bg_width = line
+					wezterm.reload_configuration()
+				end
+			end),
+		}),
+		pane
+	)
+end
+
+function bg.set_height(window, pane)
+	window:perform_action(
+		wezterm.action.PromptInputLine({
+			-- description = "Enter new height for background",
+			description = wezterm.format({
+				{ Attribute = { Intensity = "Bold" } },
+				{ Foreground = { AnsiColor = "Fuchsia" } },
+				{ Text = "Enter new height for background" },
+			}),
+			initial_value = wezterm.GLOBAL.bg_height,
+			action = wezterm.action_callback(function(_, _, line)
+				-- line will be `nil` if they hit escape without entering anything
+				-- An empty string if they just hit enter
+				-- Or the actual line of text they wrote
+				if line then
+					wezterm.GLOBAL.bg_height = line
+					wezterm.reload_configuration()
+				end
+			end),
+		}),
+		pane
+	)
 end
 
 return bg
