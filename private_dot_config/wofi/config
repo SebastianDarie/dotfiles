@@ -1,0 +1,11 @@
+[general]
+run=true
+show-only-categories=true
+show-icons=true
+line-height=24
+padding=10
+border-radius=10
+
+[launcher]
+show-apps=true
+
