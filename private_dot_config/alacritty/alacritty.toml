@@ -8,8 +8,8 @@ history = 5000
 size = 11.25
 # size = 14
 
-[colors]
-[colors.primary]
+# [colors]
+# [colors.primary]
 # foreground = "#52ad70"
 # background = "#000000"
 # background = "0x282828"
