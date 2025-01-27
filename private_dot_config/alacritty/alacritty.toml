@@ -6,7 +6,7 @@ history = 5000
 [font]
 # normal = { family = "Jetbrains Nerdfont Mono", style = "Regular" }
 size = 11.25
-# size = 14
+# size = 10.75
 
 # [colors]
 # [colors.primary]
@@ -16,5 +16,5 @@ size = 11.25
 # foreground = "0xebdbb2"
 
 [window]
-opacity = 0.7
+opacity = 0.8
 decorations = "none"
