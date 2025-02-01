@@ -5,7 +5,12 @@ history = 5000
 
 [font]
 # normal = { family = "Jetbrains Nerdfont Mono", style = "Regular" }
-size = 11.25
+# for 4k
+size = 15
+# for 4k with 125 scale
+# size = 12.5
+# for 4k with 150 scale aka 2k
+# size = 11.25
 # size = 10.75
 
 # [colors]
