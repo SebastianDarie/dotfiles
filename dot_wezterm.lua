@@ -109,6 +109,15 @@ config.ssh_domains = {
 }
 -- config.font_size = 10
 config.front_end = "WebGpu"
+config.webgpu_preferred_adapter = {
+	backend = "Vulkan",
+	device = 29822,
+	device_type = "DiscreteGpu",
+	driver = "radv",
+	driver_info = "Mesa 24.3.4",
+	name = "AMD Radeon RX 7700 XT (RADV NAVI32)",
+	vendor = 4098,
+}
 config.max_fps = 60
 -- config.animation_fps = 255
 config.tab_bar_at_bottom = true
