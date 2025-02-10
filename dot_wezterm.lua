@@ -107,7 +107,7 @@ config.ssh_domains = {
 		username = "sebastian",
 	},
 }
--- config.font_size = 10
+config.font_size = 14
 config.front_end = "WebGpu"
 config.webgpu_preferred_adapter = {
 	backend = "Vulkan",
