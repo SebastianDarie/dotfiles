@@ -1,4 +1,3 @@
-import = ["~/.config/alacritty/cyberdream.toml"]
 
 [scrolling]
 history = 5000
@@ -23,3 +22,6 @@ size = 15
 [window]
 opacity = 0.8
 decorations = "none"
+
+[general]
+import = ["~/.config/alacritty/cyberdream.toml"]
