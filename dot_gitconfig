@@ -11,3 +11,39 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+
+[core]
+    pager = delta
+
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    cm = commit
+    # Amend the last commit
+    amend = commit --amend
+    # Visual log graph with colors and author info
+    lg = log --color --graph --pretty=format:'%C(auto)%h%d %s %C(blue)%cr %C(green)(%an)' --abbrev-commit --all
+    last = log -1 HEAD
+    # Create fixup commits for use with --autosquash
+    fixup = commit --fixup
+    # Create squash commits for use with --autosquash
+    squash = commit --squash
+    # Start an interactive rebase with autosquash enabled
+    rbi = rebase -i --autosquash
+    # Unstage files easily
+    unstage = reset HEAD --
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true
+    line-numbers = true
+    side-by-side = true
+
+[merge]
+    conflictstyle = zdiff3
+[rerere]
+	enabled = true
