@@ -9,6 +9,7 @@ alias lg=lazygit
 alias pn=pnpm
 alias v=nvim
 alias vi=vim
+alias va="NVIM_APPNAME=nvim-astrovim nvim"
 alias vl="NVIM_APPNAME=nvim-lazyvim nvim"
 alias nv="NVIM_APPNAME=nvim-lazyvim WINIT_X11_SCALE_FACTOR=1 neovide"
 alias xterm="xterm -bg black -fg white"
@@ -16,15 +17,70 @@ alias xterm="xterm -bg black -fg white"
 set -gx EDITOR nvim
 
 # pnpm
-set -gx PNPM_HOME "/home/sebastian/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+if not contains -- $PNPM_HOME $PATH
+    set -gx PATH $PNPM_HOME $PATH
 end
-# pnpm end
 
-{{- if eq .chezmoi.osRelease.id "opensuse-tumbleweed" }}
-# Created by `pipx` on 2024-07-31 19:40:01
-set PATH $PATH /home/sebastian/.local/bin
+# pipx
+set -l pipx_bin $HOME/.local/bin
+if not contains -- $pipx_bin $PATH
+    set -gx PATH $PATH $pipx_bin
+end
+
+# Composer
+set -l composer_bin $HOME/.config/composer/vendor/bin
+if not contains -- $composer_bin $PATH
+    set -gx PATH $composer_bin $PATH
+end
+
+# bun
+set -gx BUN_INSTALL "$HOME/.bun"
+set -l bun_bin $BUN_INSTALL/bin
+if not contains -- $bun_bin $PATH
+    set -gx PATH $bun_bin $PATH
+end
+
+# Add ROCm executables
+# if not contains -- /usr/lib64/rocm/bin $PATH
+#     set -gx PATH /usr/lib64/rocm/bin $PATH
+# end
+
+set -l cargo_bin $HOME/.cargo/bin
+if not contains -- $cargo_bin $PATH
+    set -gx PATH $cargo_bin $PATH
+end
+
+set -l pnpm_bin $HOME/.local/share/pnpm
+if not contains -- $pnpm_bin $PATH
+    set -gx PATH $pnpm_bin $PATH
+end
+
+set -l depot_tools_dir $HOME/Desktop/depot_tools
+if test -d $depot_tools_dir
+    if not contains -- $depot_tools_dir $PATH
+        set -gx PATH $depot_tools_dir $PATH
+    end
+end
+
+function dedupe_path --description 'Remove duplicate entries from $PATH while preserving order'
+    set -l new
+    for p in $PATH
+        if not contains -- $p $new
+            set new $new $p
+        end
+    end
+    set -gx PATH $new
+end
+
+# add ROCm executables to your PATH
+# set -U fish_user_paths /usr/lib64/rocm/bin
+
+# add ROCm libs to LD_LIBRARY_PATH
+# set -x LD_LIBRARY_PATH /usr/lib64/rocm/lib $LD_LIBRARY_PATH
+
+# set -gx HIP_VISIBLE_DEVICES 0
+# set -gx HSA_OVERRIDE_GFX_VERSION 11.0.0
 
 function save_all_workspaces
     set workspaces (i3-msg -t get_workspaces | jq -r '.[].num')
@@ -42,7 +98,6 @@ function restore_all_workspaces
     end
     echo "Restored layouts for all saved workspaces."
 end
-{{- end}}
 
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
@@ -52,3 +107,5 @@ function y
     end
     rm -f -- "$tmp"
 end
+
+dedupe_path
